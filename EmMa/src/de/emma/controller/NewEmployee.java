@@ -36,7 +36,7 @@ public class NewEmployee {
 		int holidays = e1.getHolidays();
 
 		String url = "jdbc:mysql://localhost:3306";
-		String password = "qBjZdVUH";
+		String password = "";
 		String user = "root";
 		String database = "employeemanager";
 
