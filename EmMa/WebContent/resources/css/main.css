@@ -7,6 +7,13 @@ body {
 	margin-top: 0px;
 }
 
+#clock{
+	font-size: 25px;
+	border-bottom: 5px solid orange;
+	border-right: 5px solid orange;
+	width: 100px;
+	background-color: #FFB939;
+}
 #main {
 	min-height: 850px;
 	max-width: 1800px;

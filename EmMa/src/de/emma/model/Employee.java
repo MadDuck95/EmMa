@@ -1,7 +1,5 @@
 package de.emma.model;
 
-import java.util.Date;
-
 // attributes a employee owns
 public class Employee {
 
@@ -14,6 +12,7 @@ public class Employee {
 	private String department;
 	private int salary;
 	private int holidays;
+	
 //	private Date registerDate;
 	
 	public String getFirstName() {
