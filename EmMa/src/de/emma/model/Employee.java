@@ -1,96 +1,74 @@
 package de.emma.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Date;
 
-@Entity
-@Table(name = "employee")
+// attributes a employee owns
 public class Employee {
-	@Id
-	@GeneratedValue
-	@Column(name = "person")
+
 	private String firstName;
 	private String lastName;
 	private String adress;
 	private int zip;
 	private String city;
-	private String department;
 	private String title;
+	private String department;
 	private int salary;
 	private int holidays;
-
+//	private Date registerDate;
+	
 	public String getFirstName() {
-		return this.firstName;
+		return firstName;
 	}
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
 	public String getLastName() {
-		return this.lastName;
+		return lastName;
 	}
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
 	public String getAdress() {
-		return this.adress;
+		return adress;
 	}
-
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
-
 	public int getZip() {
-		return this.zip;
+		return zip;
 	}
-
 	public void setZip(int zip) {
 		this.zip = zip;
 	}
-
 	public String getCity() {
-		return this.city;
+		return city;
 	}
-
 	public void setCity(String city) {
 		this.city = city;
 	}
-
-	public String getDepartment() {
-		return this.department;
-	}
-
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-
 	public String getTitle() {
-		return this.title;
+		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	public int getSalary() {
-		return this.salary;
+	public String getDepartment() {
+		return department;
 	}
-
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	public int getSalary() {
+		return salary;
+	}
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-
 	public int getHolidays() {
-		return this.holidays;
+		return holidays;
 	}
-
 	public void setHolidays(int holidays) {
 		this.holidays = holidays;
 	}
+	
 }

@@ -1,10 +1,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="de">
 
 <head>
-<link href="<c:url value="/resources/css/newEmployee.css" />"
-	rel="stylesheet">
+
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta charset="utf-8" />
@@ -12,47 +12,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>EmMa - new Employee</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="<c:url value="/resources/css/Employee.css" />"
+	rel="stylesheet">
 </head>
 
 <body>
 	<div id="main">
-		<form action="/EmMa/registeredEmployee.html" method="post">
-			<div id="title">${title}
-				<input id="sub" type="submit" value="register" />
-				<button id = "back" type="button">Back</button>
+		<form:form action="/EmMa/registeredEmployee.html"
+			modelAttribute="initEmployee" method="POST">
+			<div id="titleMsg">
+				<a href="/EmMa/newEmployee.html">
+					<i class="fa fa-user-plus fa-lg">
+				</a></i>${newEmployeeTitle}
+				
+				<input type="submit" id = "sub" value="register"/> 
+				<a href="/EmMa/"><i class="fa fa-home fa-lg"> </i></a>
 			</div>
-			<div id="flexbox">
-				<p>
-					First name : <input type="text" name="firstName" />
-				</p>
-				<p>
-					Last name : <input type="text" name="lastName" />
-				</p>
-				<p>
-					Adress : <input type="text" name="adress" />
-				</p>
-				<p>
-					Zip code : <input type="text" name="zip" />
-				</p>
-				<p>
-					City : <input type="text" name="city" />
-				</p>
-			</div>
-			<div id="flexbox">
-				<p>
-					Department : <input type="text" name="department" />
-				</p>
-				<p>
-					Title : <input type="text" name="title" />
-				</p>
-				<p>
-					Salary : <input type="text" name="salary" />
-				</p>
-				<p>
-					Holidays : <input type="text" name="holidays" />
-				</p>
-			</div>
-		</form>
+			<form:errors path="employee.*" />
+			<table>
+				<tr>
+					<td><form:label path="firstName">First name:</form:label></td>
+					<td><form:input path="firstName" type="text"
+							value="enter first name"></form:input>
+				</tr>
+				<tr>
+					<td><form:label path="lastName">Last name:</form:label></td>
+					<td><form:input path="lastName" type="text"
+							value="enter last name"></form:input>
+				</tr>
+				<tr>
+					<td><form:label path="adress">Adress:</form:label></td>
+					<td><form:input path="adress" type="text" value="enter adress"></form:input>
+				</tr>
+				<tr>
+					<td><form:label path="zip">Zip code:</form:label></td>
+					<td><form:input path="zip" type="text" value="enter zip"></form:input>
+				</tr>
+				<tr>
+					<td><form:label path="city">City:</form:label></td>
+					<td><form:input path="city" type="text" value="enter city"></form:input>
+				</tr>
+				<tr>
+					<td><form:label path="title">Title:</form:label></td>
+					<td><form:input path="title" type="text" value="enter title"></form:input>
+				</tr>
+				<tr>
+					<td><form:label path="department">DepartmentNr:</form:label></td>
+					<td><form:input path="department" type="text"
+							value="select department"></form:input>
+				</tr>
+				<tr>
+					<td><form:label path="salary">Salary:</form:label></td>
+					<td><form:input path="salary" type="text" value="enter salary"></form:input>
+				</tr>
+				<tr>
+					<td><form:label path="holidays">Holidays:</form:label></td>
+					<td><form:input path="holidays" type="number"></form:input>
+				</tr>
+			</table>
+		</form:form>
+
 	</div>
 </body>
 </html>

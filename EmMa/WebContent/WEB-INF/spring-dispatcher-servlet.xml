@@ -28,10 +28,18 @@
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/EmployeeManager" />
 		<property name="user" value="root" />
-		<property name="password" value="qBjZdVUH" />
+		<property name="password" value="" />
 		<property name="minPoolSize" value="2" />
 		<property name="maxPoolSize" value="4" />
 	</bean>
+
+	<bean id="messageSource"
+        class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="validation" />
+    </bean>
+
+ 	<bean id="employeeValidator" 
+ 		class="de.emma.controller.EmployeeValidator" />
 
 	<mvc:annotation-driven />
 

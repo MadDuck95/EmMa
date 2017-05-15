@@ -14,13 +14,34 @@ public class Startup {
 			Class.forName(driverClass);
 			Connection con = DriverManager.getConnection(url, user, password);
 			Statement st = con.createStatement();
-			String statement_1 = "CREATE DATABASE IF NOT EXISTS " + database + " default charset utf8"
+			String statement = "CREATE DATABASE IF NOT EXISTS " + database + " default charset utf8"
 					+ " COLLATE utf8_general_ci;";
-			st.execute(statement_1);
+			st.execute(statement);
 			st.execute("USE " + database);
-			st.execute("CREATE TABLE IF NOT EXISTS employee (" + "firstName VARCHAR(25)," + " lastName VARCHAR(25),"
-					+ " adress VARCHAR(25)," + " zip INTEGER(25)," + " city VARCHAR(25)," + " department VARCHAR(25),"
-					+ " title VARCHAR(25)," + " salary INTEGER(25)," + " holidays INTEGER(25))");
+			
+			// create employee table with entries
+			st.execute("CREATE TABLE IF NOT EXISTS employee ("
+					+ "firstName VARCHAR(25),"
+					+ " lastName VARCHAR(25),"
+					+ " adress VARCHAR(25),"
+					+ " zip INTEGER(25)," 
+					+ " city VARCHAR(25),"
+					+ " departmentNr INTEGER(25),"
+					+ " title VARCHAR(25),"
+					+ " salary INTEGER(25),"
+					+ " holidays INTEGER(25)"
+					+ ")");
+			
+			// create department table with entries
+			st.execute("CREATE TABLE IF NOT EXISTS department ("
+					+ "depId INTEGER(25),"
+					+ "depName VARCHAR(25),"
+					+"PRIMARY KEY(depId)"
+					+")");
+			
+			st.execute("INSERT INTO department (depId, depName) VALUES"+ 
+			"('1','MES-Developement'), ('2','Business-Intelligence'),('3','Consulting')");
+			
 			st.close();
 			con.close();
 
