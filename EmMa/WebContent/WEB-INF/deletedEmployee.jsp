@@ -3,6 +3,7 @@
 <html lang="de">
 
 <head>
+<script src="<c:url value="/resources/js/main.js" />"></script>
 <link href="<c:url value="/resources/css/Employee.css" />"
 	rel="stylesheet">
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
@@ -16,24 +17,16 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body onload="startTime()">
 	<div id="main">
+		<div id="clock"></div>
+		<div id="home">
+			<a href="/EmMa/"> <i class="fa fa-home fa-lg"> </i></a>
+		</div>
 		<div id="titleMsg">
 			<a href="/EmMa/deleteEmployee.html"> <i
-				class="fa fa-trash-o fa-lg"></a></i>${deletedEmployeeTitle} <a
-				href="/EmMa/"><i class="fa fa-home fa-lg"> </i></a>
+				class="fa fa-trash-o fa-lg"></a></i>${deletedText}
 		</div>
-		<h2>${deletedText}</h2>
-		<table>
-			<tr>
-				<td>First name:</td>
-				<td>${firstName}</td>
-			</tr>
-			<tr>
-				<td>Last name:</td>
-				<td>${lastName}</td>
-			</tr>
-		</table>
 	</div>
 </body>
 </html>

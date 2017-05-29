@@ -1,12 +1,17 @@
 package de.emma.controller;
 
 import java.sql.*;
-import java.util.ArrayList;
-
+import java.util.Hashtable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,18 +21,22 @@ import de.emma.model.Employee;
 
 @Controller
 public class NewEmployee {
-
+	
+	// values to create connection
 	private String url = "jdbc:mysql://localhost:3306";
 	private String password = "";
 	private String user = "root";
 	private String database = "employeemanager";
 
-	// add the employee bean to enable data binding
-	@RequestMapping(value = "/newEmployee.html", method = RequestMethod.GET)
-	public ModelAndView initEmployee() {
+	// implement validator
+	@Autowired
+	@Qualifier("employeeValidator")
+	private Validator validator;
 
-		return new ModelAndView("newEmployee", "initEmployee", new Employee());
-
+	// set validator
+	@InitBinder
+	private void initBinder(WebDataBinder binder) {
+		binder.setValidator(validator);
 	}
 
 	// add common elements to site
@@ -37,17 +46,77 @@ public class NewEmployee {
 		displayModel.addAttribute("newEmployeeTitle", "register a new employee");
 
 		// registeredEmployee.html
-		displayModel.addAttribute("registeredEmployeeTitle", "Success! the employee is created!");
-		displayModel.addAttribute("registrationText", "The following data was submitted and saved: ");
+		displayModel.addAttribute("registeredEmployeeTitle", "Success! the employee is saved!");
 	};
+	
+	public ModelAndView getDeparmtmentList(){
+		ModelAndView mav = new ModelAndView();
+		
+		return mav;
+	}
 
-	// binding submitted values - register new employee
+	// add the employee bean to enable data binding
+	@RequestMapping(value = "/newEmployee.html", method = RequestMethod.GET)
+
+	public ModelAndView initEmployee(Model model) {
+
+		ModelAndView mav = new ModelAndView("newEmployee");
+
+		Hashtable<String, String> departmentTable = new Hashtable<String, String>();
+
+		try {
+
+			// build connection to the SQL Server
+			Connection con = DriverManager.getConnection(url, user, password);
+			Statement st = con.createStatement();
+
+			// statement for query
+			String sql = "SELECT * FROM department";
+			st.execute("USE " + database);
+
+			// get result from query
+			ResultSet res = st.executeQuery(sql);
+
+			// show result in console
+			while (res.next()) {
+				System.out.println(res.getString("depId") + " " + res.getString("depName"));
+
+				// set result in the HashTable
+				departmentTable.put(res.getString("depId"), res.getString("depName"));
+
+			}
+			System.out.println("");
+
+			res.close();
+			st.close();
+
+		} catch (Exception e) {
+			System.out.println("Couldnt load departments due to error " + e);
+		}
+
+		mav.addObject("departmentHashTable", departmentTable);
+		mav.addObject("initEmployee", new Employee());
+
+		return mav;
+
+	}
+
+	// binding submitted values
 	@RequestMapping(value = "/registeredEmployee.html", method = RequestMethod.POST)
-	public String submit(@ModelAttribute("initEmployee") Employee employee, BindingResult result, ModelMap model) {
+	public String submit(@ModelAttribute("initEmployee") @Validated Employee employee, BindingResult result,
+			Model model) {
+
+		model.addAttribute("newEmployee", employee);
+		
+		String returnVal = "registeredEmployee";
 
 		// return error on the same page
 		if (result.hasErrors()) {
-			return "error";
+			
+			initEmployee(model);
+			returnVal = "newEmployee";
+		} else {
+			model.addAttribute("newEmployee", employee);
 		}
 
 		try {
@@ -57,7 +126,9 @@ public class NewEmployee {
 			Statement st = con.createStatement();
 
 			// prepared statement for query
-			String sql = "INSERT INTO employee VALUES (?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO"
+					+ " employee (firstName, lastName, adress, zip, city, departmentNr, title, salary, holidays) "
+					+ "VALUES (?,?,?,?,?,?,?,?,?)";
 			PreparedStatement prepst = con.prepareStatement(sql);
 			st.execute("USE " + database);
 
@@ -82,8 +153,7 @@ public class NewEmployee {
 			System.out.println("couldnt register the new employee due to the error: " + e);
 		}
 
-		// getter methods to retrieve the data of the employee model and display
-		// on registeredEmployee.html
+		// getter methods to retrieve the data of the employee model
 		model.addAttribute("firstName", employee.getFirstName());
 		model.addAttribute("lastName", employee.getLastName());
 		model.addAttribute("adress", employee.getAdress());
@@ -94,6 +164,6 @@ public class NewEmployee {
 		model.addAttribute("salary", employee.getSalary());
 		model.addAttribute("holidays", employee.getHolidays());
 
-		return "registeredEmployee";
+		return returnVal;
 	}
 }

@@ -7,24 +7,30 @@ body {
 	margin-top: 0px;
 }
 
-#titleMsg {
-	background-color: #FFB939;
-	border-bottom: 3px solid orange;
-	max-height: 75px;
-	text-align: left;
-	font-family: Helvetica, sans-serif;
-	font-size: 40px;
-	padding: 25px 25px 25px 25px;
-	position: relative;
-	text-align: center;
-} 
-
 #main {
-	min-height: 600px;
+	min-height: 850px;
 	max-width: 1800px;
 	border: 5px solid orange;
 	background-color: white;
-	margin: 75px 150px 150px 150px;
+	margin: 50px 50px 50px 50px;
+}
+
+#clock {
+	font-size: 25px;
+	border-bottom: 5px solid orange;
+	border-right: 5px solid orange;
+	width: 100px;
+	background-color: #FFB939;
+}
+
+#titleMsg {
+	background-color: white;
+	max-height: 75px;
+	text-align: center;
+	font-family: Helvetica, sans-serif;
+	font-size: 40px;
+	padding: 60px 0px 60px 0px;
+	position: relative;
 }
 
 #flexbox {
@@ -33,10 +39,19 @@ body {
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	background-color: white;
-	padding: 25px 25px 25px 25px;
-	margin: 25px 25px 25px 25px;
 	font-size: 25px;
+	position: relative;
+	border-bottom: 3px solid orange;
+	border-top: 3px solid orange;
+	background-color: #FFB939;
+}
+
+#home {
+	position: absolute;
+	top: 60px;
+	right: 70px;
+	border-left: 3px solid orange;
+	font-size: 30px;
 }
 
 #flexSub {
@@ -45,8 +60,6 @@ body {
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	/* 	padding: 25px 25px 25px 25px;
-	margin: 25px 25px 25px 25px; */
 }
 
 #sub {
@@ -64,6 +77,7 @@ body {
 	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+	width: 300px;
 }
 
 #del {

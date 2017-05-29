@@ -1,7 +1,5 @@
-<beans
-	xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans
@@ -32,13 +30,11 @@
 		<property name="maxPoolSize" value="4" />
 	</bean>
 
-	<bean id="messageSource"
-        class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="validation" />
-    </bean>
-
- 	<bean id="employeeValidator" 
- 		class="de.emma.controller.EmployeeValidator" />
+	<bean id="employeeValidator" class="de.emma.validator.EmployeeValidator"></bean>
+	
+	<bean id = "messageSource" class = "org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name = "basename" value = "WEB-INF/ValidationMessages/validation"></property>
+	</bean>
 
 	<mvc:annotation-driven />
 

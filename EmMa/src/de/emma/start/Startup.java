@@ -21,15 +21,17 @@ public class Startup {
 			
 			// create employee table with entries
 			st.execute("CREATE TABLE IF NOT EXISTS employee ("
-					+ "firstName VARCHAR(25),"
-					+ " lastName VARCHAR(25),"
+					+ "employeeId INT(6) NOT NULL AUTO_INCREMENT, "
+					+ "firstName CHAR(25),"
+					+ " lastName CHAR(25),"
 					+ " adress VARCHAR(25),"
 					+ " zip INTEGER(25)," 
-					+ " city VARCHAR(25),"
+					+ " city CHAR(25),"
 					+ " departmentNr INTEGER(25),"
-					+ " title VARCHAR(25),"
+					+ " title CHAR(25),"
 					+ " salary INTEGER(25),"
-					+ " holidays INTEGER(25)"
+					+ " holidays INTEGER(25),"
+					+ " PRIMARY KEY(employeeId)"
 					+ ")");
 			
 			// create department table with entries
@@ -40,7 +42,12 @@ public class Startup {
 					+")");
 			
 			st.execute("INSERT INTO department (depId, depName) VALUES"+ 
-			"('1','MES-Developement'), ('2','Business-Intelligence'),('3','Consulting')");
+			"('1','MES-Developement'),"
+			+ " ('2','Business-Intelligence'),"
+			+ "('3','Consulting'),"
+			+ "('4','Human Resource'),"
+			+ "('5','Finance'),"
+			+ "('6','Information Technology')");
 			
 			st.close();
 			con.close();

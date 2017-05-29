@@ -3,6 +3,7 @@
 <html lang="de">
 
 <head>
+<script src="<c:url value="/resources/js/main.js" />"></script>
 <link href="<c:url value="/resources/css/Employee.css" />"
 	rel="stylesheet">
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
@@ -16,52 +17,54 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body onload="startTime()">
 	<div id="main">
+		<div id="clock"></div>
+		<div id="home"><a href="/EmMa/"> <i class="fa fa-home fa-lg"> </i></a></div>
 		<div id="titleMsg">
 			<a href="/EmMa/newEmployee.html"> <i
-				class="fa fa-user-plus fa-lg"></a></i>${registeredEmployeeTitle} <a
-				href="/EmMa/"><i class="fa fa-home fa-lg"> </i></a>
+				class="fa fa-user-plus fa-lg"></a></i>${registeredEmployeeTitle}
 		</div>
-		<h2>${registrationText}</h2>
-		<table>
-			<tr>
-				<td>First name:</td>
-				<td>${firstName}</td>
-			</tr>
-			<tr>
-				<td>Last name:</td>
-				<td>${lastName}</td>
-			</tr>
-			<tr>
-				<td>Adress:</td>
-				<td>${adress}</td>
-			</tr>
-			<tr>
-				<td>Zip code:</td>
-				<td>${zip}</td>
-			</tr>
-			<tr>
-				<td>City:</td>
-				<td>${city}</td>
-			</tr>
-			<tr>
-				<td>Department:</td>
-				<td>${department}</td>
-			</tr>
-			<tr>
-				<td>Title:</td>
-				<td>${title}</td>
-			</tr>
-			<tr>
-				<td>Salary:</td>
-				<td>${salary}</td>
-			</tr>
-			<tr>
-				<td>Holidays:</td>
-				<td>${holidays}</td>
-			</tr>
-		</table>
+		<div id="flexbox">
+			<table>
+				<tr>
+					<td>First name:</td>
+					<td>${firstName}</td>
+				</tr>
+				<tr>
+					<td>Last name:</td>
+					<td>${lastName}</td>
+				</tr>
+				<tr>
+					<td>Adress:</td>
+					<td>${adress}</td>
+				</tr>
+				<tr>
+					<td>Zip code:</td>
+					<td>${zip}</td>
+				</tr>
+				<tr>
+					<td>City:</td>
+					<td>${city}</td>
+				</tr>
+				<tr>
+					<td>Department:</td>
+					<td>${department}</td>
+				</tr>
+				<tr>
+					<td>Title:</td>
+					<td>${title}</td>
+				</tr>
+				<tr>
+					<td>Salary:</td>
+					<td>${salary}</td>
+				</tr>
+				<tr>
+					<td>Holidays:</td>
+					<td>${holidays}</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 </body>
 </html>
