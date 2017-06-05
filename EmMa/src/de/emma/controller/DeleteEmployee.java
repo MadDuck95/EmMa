@@ -57,7 +57,7 @@ public class DeleteEmployee {
 
 	// Mapping for deleting an Employee
 	@RequestMapping(value = "/deleteEmployee.html", method = RequestMethod.GET)
-	private ModelAndView initEmployees(Model model) {
+	private ModelAndView initEmployees() {
 
 		ModelAndView mav = new ModelAndView("deleteEmployee");
 		

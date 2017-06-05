@@ -57,7 +57,6 @@ public class NewEmployee {
 
 	// add the employee bean to enable data binding
 	@RequestMapping(value = "/newEmployee.html", method = RequestMethod.GET)
-
 	public ModelAndView initEmployee(Model model) {
 
 		ModelAndView mav = new ModelAndView("newEmployee");
@@ -133,7 +132,6 @@ public class NewEmployee {
 			st.execute("USE " + database);
 
 			// get the characteristics of the submitted employee
-			// SQL statement
 			prepst.setObject(1, employee.getFirstName());
 			prepst.setObject(2, employee.getLastName());
 			prepst.setObject(3, employee.getAdress());

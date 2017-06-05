@@ -30,7 +30,7 @@
 			modelAttribute="initEmployee" method="POST">
 			<div id="titleMsg">
 				<a href="/EmMa/newEmployee.html"> <i
-					class="fa fa-user-plus fa-lg"></a></i> ${newEmployeeTitle}
+					class="fa fa-user-plus fa-lg"></i></a> ${newEmployeeTitle}
 			</div>
 
 			<div id="flexbox">
@@ -92,8 +92,9 @@
 						<td><form:errors path="holidays"
 								cssStyle="background-color: #FFAAAA; border: 1px solid red;" /></td>
 					</tr>
-					<td><input type="submit" id="sub" value="register" /> <a
-						href="/EmMa/"></a></td>
+					<tr>
+						<td><input type="submit" id="sub" value="register" /></td>
+					</tr>
 				</table>
 			</div>
 		</form:form>

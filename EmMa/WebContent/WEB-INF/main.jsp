@@ -16,10 +16,6 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<script>
-	
-</script>
-
 <body onload="startTime()">
 	<div id="main">
 		<div id="clock"></div>
@@ -55,7 +51,7 @@
 						${deleteEmployee}
 					</div>
 				</div>
-			</a> <a href="/EmMa/projects.html">
+			</a> <a href="/EmMa/projectsMain.html">
 				<div id="divTile">
 					<div id="divTileContent">
 						<p>

@@ -29,7 +29,7 @@
 			modelAttribute="getEmployee" method="POST">
 			<div id="titleMsg">
 				<a href="/EmMa/deleteEmployee.html"> <i
-					class="fa fa-trash-o fa-lg"></a></i> ${deleteEmployeeTitle}
+					class="fa fa-trash-o fa-lg"></i></a> ${deleteEmployeeTitle}
 			</div>
 
 			<div id="flexbox">
@@ -42,8 +42,9 @@
 						<td><form:errors path="lastName"
 								cssStyle="background-color:#FFAAAA; border:1px solid red;" /></td>
 					</tr>
-					<td><input type="submit" id="del" value="delete" /></td>
-
+					<tr>
+						<td><input type="submit" id="del" value="delete" /></td>
+					</tr>
 				</table>
 			</div>
 		</form:form>

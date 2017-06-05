@@ -1,6 +1,6 @@
 package de.emma.model;
 
-// attributes a employee owns
+// attributes
 public class Employee {
 
 	private String firstName;
@@ -14,6 +14,7 @@ public class Employee {
 	private int salary;
 	private int holidays;
 
+	// setter and getter
 	public String getFirstName() {
 		return firstName;
 	}

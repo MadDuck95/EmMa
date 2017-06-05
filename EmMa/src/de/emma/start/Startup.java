@@ -18,37 +18,30 @@ public class Startup {
 					+ " COLLATE utf8_general_ci;";
 			st.execute(statement);
 			st.execute("USE " + database);
-			
+
 			// create employee table with entries
-			st.execute("CREATE TABLE IF NOT EXISTS employee ("
-					+ "employeeId INT(6) NOT NULL AUTO_INCREMENT, "
-					+ "firstName CHAR(25),"
-					+ " lastName CHAR(25),"
-					+ " adress VARCHAR(25),"
-					+ " zip INTEGER(25)," 
-					+ " city CHAR(25),"
-					+ " departmentNr INTEGER(25),"
-					+ " title CHAR(25),"
-					+ " salary INTEGER(25),"
-					+ " holidays INTEGER(25),"
-					+ " PRIMARY KEY(employeeId)"
-					+ ")");
-			
+			st.execute("CREATE TABLE IF NOT EXISTS employee (" + "employeeId INT(6) NOT NULL AUTO_INCREMENT, "
+					+ "firstName CHAR(25)," + " lastName CHAR(25)," + " adress VARCHAR(25)," + " zip INTEGER(25),"
+					+ " city CHAR(25)," + " departmentNr INTEGER(25)," + " title CHAR(25)," + " salary INTEGER(25),"
+					+ " holidays INTEGER(25)," + " PRIMARY KEY(employeeId)" + ")");
+
+			// create projects
+			st.execute("CREATE TABLE IF NOT EXISTS projects (" + "pnr INT(6) NOT NULL AUTO_INCREMENT, "
+					+ "pDesc CHAR(60)," + " startDate DATE," + " endDate DATE,"+ " pText CHAR(250)," + " PRIMARY KEY(pnr)" + ")");
+
+			// create proj_team
+			st.execute("CREATE TABLE IF NOT EXISTS proj_team (" + "prEnr INT(6) NOT NULL AUTO_INCREMENT, "
+					+ "eNr1 INT(25)," + "eNr2 INT(25)," + "eNr3 INT(25)," + "eNr4 INT(25)," + "pnr INT(25),"
+					+ "PRIMARY KEY(prEnr)" + ")");
+
 			// create department table with entries
-			st.execute("CREATE TABLE IF NOT EXISTS department ("
-					+ "depId INTEGER(25),"
-					+ "depName VARCHAR(25),"
-					+"PRIMARY KEY(depId)"
-					+")");
-			
-			st.execute("INSERT INTO department (depId, depName) VALUES"+ 
-			"('1','MES-Developement'),"
-			+ " ('2','Business-Intelligence'),"
-			+ "('3','Consulting'),"
-			+ "('4','Human Resource'),"
-			+ "('5','Finance'),"
-			+ "('6','Information Technology')");
-			
+			st.execute("CREATE TABLE IF NOT EXISTS department (" + "depId INTEGER(6) NOT NULL AUTO_INCREMENT,"
+					+ "depName VARCHAR(25)," + "PRIMARY KEY(depId)" + ")");
+
+			st.execute("INSERT INTO department (depId,depName) VALUES" + "('1','MES-Developement'),"
+					+ " ('2','Business-Intelligence')," + "('3','Consulting')," + "('4','Human Resource'),"
+					+ "('5','Finance')," + "('6','Information Technology')");
+
 			st.close();
 			con.close();
 

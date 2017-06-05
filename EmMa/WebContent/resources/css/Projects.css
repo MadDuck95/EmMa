@@ -47,6 +47,29 @@ body {
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
+	font-size: 25px;
+	position: relative;
+	border-bottom: 3px solid orange;
+	border-top: 3px solid orange;
+	background-color: #FFB939;
+}
+
+#sub {
+	padding: 10px 15px 11px !important;
+	font-size: 18px !important;
+	background-color: green;
+	font-weight: bold;
+	text-shadow: 1px 1px green;
+	color: #ffffff;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid green;
+	cursor: pointer;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+	width: 300px;
 }
 
 #divTile {
