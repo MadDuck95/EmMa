@@ -33,7 +33,7 @@ public class Startup {
 			st.execute("CREATE TABLE IF NOT EXISTS proj_team (" + "prEnr INT(6) NOT NULL AUTO_INCREMENT, "
 					+ "eNr1 INT(25)," + "eNr2 INT(25)," + "eNr3 INT(25)," + "eNr4 INT(25)," + "pnr INT(25),"
 					+ "PRIMARY KEY(prEnr)" + ")");
-			
+
 			// create calendar table
 			st.execute("CREATE TABLE IF NOT EXISTS calendar (" + "calId INTEGER(6) NOT NULL AUTO_INCREMENT,"
 					+ "calTitle CHAR(250)," + "startDate CHAR(25)," + "endDate CHAR(25)," + "PRIMARY KEY(calId)" + ")");
@@ -45,7 +45,7 @@ public class Startup {
 			st.execute("INSERT INTO department (depId,depName) VALUES" + "('1','MES-Developement'),"
 					+ " ('2','Business-Intelligence')," + "('3','Consulting')," + "('4','Human Resource'),"
 					+ "('5','Finance')," + "('6','Information Technology')");
-			
+
 			st.close();
 			con.close();
 

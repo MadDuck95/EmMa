@@ -37,32 +37,15 @@
 			height: 650,
 			editable: true,
 			selectable: true,
-			//events: "./WebContent/resources/json-events.jsp",
-			/*eventSources: [
+			//events: "json-events.jsp",
+			eventSources: [
 		    {events: [
 		        	{title  : "Es funktioniert!",
 		            start  : '2017-06-01',
 		            end    : '2017-06-07'},
 			],
 			color: 'orangered',}
-			]*/
-			/*editable: true,
-
-              eventSources: [
-                            		{
-                                    url: '/calendarServlet',
-                                    type: 'GET',
-                                    data: {
-                                        start: 'start',
-                                        end: 'end',
-                                        title: 'title',
-                                    },
-                                    error: function () {
-                                        alert('there was an error while fetching events!');
-                                    }
-                            }
-                    ]         
-            });*/
+			]
 		});
 	});
 </script>

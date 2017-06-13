@@ -35,10 +35,9 @@
 	<bean id = "messageSource" class = "org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name = "basename" value = "WEB-INF/ValidationMessages/validation"></property>
 	</bean>
-	
-	
+
 	<mvc:annotation-driven />
-	<mvc:default-servlet-handler/>
+
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<bean id="viewResolver"
@@ -50,4 +49,5 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
+
 </beans>
