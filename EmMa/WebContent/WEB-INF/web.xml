@@ -9,13 +9,4 @@
     <servlet-name>spring-dispatcher</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  
-	<servlet>
-    	<servlet-name>calendarEvent</servlet-name>
-    	<servlet-class>de.emma.controller.CalendarServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-    	<servlet-name>calendarEvent</servlet-name>
-    	<url-pattern>/calendarServlet</url-pattern>
-	</servlet-mapping>
 </web-app>
