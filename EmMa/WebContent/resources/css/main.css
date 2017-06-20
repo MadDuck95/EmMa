@@ -23,6 +23,14 @@ body {
 	font-size: 30px;
 }
 
+#out {
+	position: absolute;
+	top: 55px;
+	right: 70px;
+	border-left: 3px solid orange;
+	font-size: 30px;
+}
+
 #main {
 	min-height: 850px;
 	max-width: 1800px;

@@ -10,6 +10,7 @@
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<context:component-scan base-package="de.emma.controller" />
+	<context:component-scan base-package="WEB-INF" />
 
 	<!-- create a database connection with necessary resources -->
 	<bean id="startup" class="de.emma.start.Startup" init-method="connectDB">
@@ -39,6 +40,7 @@
 	<mvc:annotation-driven />
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<import resource="security-servlet.xml"/>
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

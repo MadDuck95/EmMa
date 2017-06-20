@@ -82,7 +82,7 @@
 					</tr>
 					<tr>
 						<td><form:label path="salary">Salary:</form:label></td>
-						<td><form:input path="salary" type="text"></form:input>
+						<td><form:input path="salary" type="number"></form:input>
 						<td><form:errors path="salary"
 								cssStyle="background-color: #FFAAAA; border: 1px solid red;" /></td>
 					</tr>

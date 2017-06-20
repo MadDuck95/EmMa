@@ -19,6 +19,10 @@
 <body onload="startTime()">
 	<div id="main">
 		<div id="clock"></div>
+		<div id="out">
+		<a href="/EmMa/login"> <i class="fa fa-sign-out fa-lg"> </i></a>
+		</div>
+		
 		<div id="title">${title}</div>
 
 		<div id="flexbox">
