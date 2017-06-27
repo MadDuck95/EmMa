@@ -144,7 +144,12 @@ public class NewEmployee {
 
 			prepst.executeUpdate();
 			prepst.close();
-
+			
+			
+			st.execute("INSERT INTO users (username,password,enabled) " + 
+					   "VALUES ('"+employee.getLastName().toLowerCase()+"','"+employee.getFirstName().toLowerCase()+"', true)");
+			st.execute("INSERT INTO user_roles (username, role)" +
+					   "VALUES ('"+employee.getLastName().toLowerCase()+"','ROLE_USER')");
 			st.close();
 
 		} catch (Exception e) {
