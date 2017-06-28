@@ -91,6 +91,7 @@ public class DeleteEmployee {
 
 			}
 			System.out.println("");
+			
 
 			res.close();
 			st.close();
@@ -131,6 +132,11 @@ public class DeleteEmployee {
 			PreparedStatement prep = con.prepareStatement(sql);
 
 			prep.setObject(1, employee.getLastName());
+			
+			// move employee user_name and role from users and user_role
+			st.execute("DELETE FROM users WHERE username = "+employee.getLastName()+"");
+			st.execute("DELETE FROM user_roles WHERE username = "+employee.getLastName()+"");
+					   
 			prep.executeUpdate();
 
 		} catch (Exception e) {

@@ -145,11 +145,12 @@ public class NewEmployee {
 			prepst.executeUpdate();
 			prepst.close();
 			
-			
+			 // create User_name, password and User_rolle for the new employee 
 			st.execute("INSERT INTO users (username,password,enabled) " + 
-					   "VALUES ('"+employee.getLastName().toLowerCase()+"','"+employee.getFirstName().toLowerCase()+"', true)");
+					   "VALUES ('"+employee.getLastName()+"','"+employee.getFirstName().toLowerCase()+"."+employee.getLastName().toLowerCase()+"', true)");
 			st.execute("INSERT INTO user_roles (username, role)" +
-					   "VALUES ('"+employee.getLastName().toLowerCase()+"','ROLE_USER')");
+					   "VALUES ('"+employee.getLastName()+"','ROLE_USER')");
+			
 			st.close();
 
 		} catch (Exception e) {
