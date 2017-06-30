@@ -23,11 +23,11 @@
 <body onload="startTime()">
 	<div id="main">
 		<div id="clock"></div>
-		<div id="out">
+		<div id="home">
 			<a href="/EmMa/login"> <i class="fa fa-sign-out fa-lg"> </i></a>
 		</div>
 
-		<div id="title">${title}</div>
+		<h1 id="title">${title}</h1>
 
 		<div id="flexbox">
 			<a href="/EmMa/newEmployee.html">

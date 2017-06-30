@@ -8,9 +8,10 @@
 		http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
+	
+	<mvc:view-controller path="/login" view-name="login" />
 	<context:component-scan base-package="de.emma.controller" />
-	<context:component-scan base-package="WEB-INF" />
+	
 
 	<!-- create a database connection with necessary resources -->
 	<bean id="startup" class="de.emma.start.Startup" init-method="connectDB">
@@ -40,7 +41,12 @@
 	<mvc:annotation-driven />
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	<!-- Spring Security  -->
 	<import resource="security-servlet.xml"/>
+	
+	
+	
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

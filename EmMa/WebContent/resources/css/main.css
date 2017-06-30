@@ -23,13 +23,6 @@ body {
 	font-size: 30px;
 }
 
-#out {
-	position: absolute;
-	top: 55px;
-	right: 70px;
-	border-left: 3px solid orange;
-	font-size: 30px;
-}
 
 #main {
 	min-height: 850px;
@@ -73,6 +66,24 @@ body {
 	font-family: Helvetica, sans-serif;
 	font-size: 20px;
 	margin: 5px;
+}
+
+#submit {
+	
+	text-align: center;
+	font-family: Helvetica, sans-serif;
+	font-size: 40px;
+	position: relative;
+}
+
+#login-box {
+	width: 300px;
+	padding: 20px;
+	margin: 100px auto;
+	background: orange ;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border: 1px solid #000;
 }
 
 i {
