@@ -4,20 +4,27 @@
 <html lang="de">
 
 <head>
+<!-- javascript -->
+<script src="<c:url value="/resources/js/employee.js" />"></script>
+<script src="<c:url value="/resources/js/sweetalert.min.js" />"></script>
 
-<script src="<c:url value="/resources/js/main.js" />"></script>
+<!-- css -->
 <link href="<c:url value="/resources/css/Employee.css" />"
 	rel="stylesheet">
+<link href="<c:url value="/resources/css/sweetalert.css"/>"
+	rel="stylesheet">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
 
 <title>EmMa - delete Employee</title>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
 
 <body onload="startTime()">
 	<div id="main">
@@ -25,8 +32,9 @@
 		<div id="home">
 			<a href="/EmMa/"> <i class="fa fa-home fa-lg"> </i></a>
 		</div>
-		<form:form action="/EmMa/deletedEmployee.html"
-			modelAttribute="getEmployee" method="POST">
+		<form:form name="employeeSelect" onsubmit="return validateEmployee()"
+			action="/EmMa/deletedEmployee.html" modelAttribute="getEmployee"
+			method="POST">
 			<div id="titleMsg">
 				<a href="/EmMa/deleteEmployee.html"> <i
 					class="fa fa-trash-o fa-lg"></i></a> ${deleteEmployeeTitle}
@@ -35,12 +43,10 @@
 			<div id="flexbox">
 				<table>
 					<tr>
-						<td><form:select path="lastName">
+						<td><form:select path="lastName" name = "lastName">
 								<form:option value="" label="Select employee ..." />
 								<form:options items="${employeeHashTable}" />
 							</form:select>
-						<td><form:errors path="lastName"
-								cssStyle="background-color:#FFAAAA; border:1px solid red;" /></td>
 					</tr>
 					<tr>
 						<td><input type="submit" id="del" value="delete" /></td>

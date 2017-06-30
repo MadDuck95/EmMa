@@ -102,21 +102,11 @@ public class NewEmployee {
 
 	// binding submitted values
 	@RequestMapping(value = "/registeredEmployee.html", method = RequestMethod.POST)
-	public String submit(@ModelAttribute("initEmployee") @Validated Employee employee, BindingResult result,
-			Model model) {
+	public String submit(@ModelAttribute("initEmployee") @Validated Employee employee, Model model) {
 
 		model.addAttribute("newEmployee", employee);
 		
 		String returnVal = "registeredEmployee";
-
-		// return error on the same page
-		if (result.hasErrors()) {
-			
-			initEmployee(model);
-			returnVal = "newEmployee";
-		} else {
-			model.addAttribute("newEmployee", employee);
-		}
 
 		try {
 
@@ -139,18 +129,17 @@ public class NewEmployee {
 			prepst.setObject(5, employee.getCity());
 			prepst.setObject(6, employee.getDepartment());
 			prepst.setObject(7, employee.getTitle());
-			prepst.setObject(8, employee.getSalary());
-			prepst.setObject(9, employee.getHolidays());
+			prepst.setInt(8, employee.getSalary());
+			prepst.setInt(9, employee.getHolidays());
 
 			prepst.executeUpdate();
 			prepst.close();
 			
-			 // create User_name, password and User_rolle for the new employee 
-			st.execute("INSERT INTO users (username,password,enabled) " + 
-					   "VALUES ('"+employee.getLastName()+"','"+employee.getFirstName().toLowerCase()+"."+employee.getLastName().toLowerCase()+"', true)");
-			st.execute("INSERT INTO user_roles (username, role)" +
-					   "VALUES ('"+employee.getLastName()+"','ROLE_USER')");
 			
+			st.execute("INSERT INTO users (username,password,enabled) " + 
+					   "VALUES ('"+employee.getLastName().toLowerCase()+"','"+employee.getFirstName().toLowerCase()+"', true)");
+			st.execute("INSERT INTO user_roles (username, role)" +
+					   "VALUES ('"+employee.getLastName().toLowerCase()+"','ROLE_USER')");
 			st.close();
 
 		} catch (Exception e) {

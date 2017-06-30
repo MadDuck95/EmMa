@@ -35,15 +35,6 @@ public class DeleteEmployee {
 	private String user = "root";
 	private String database = "employeemanager";
 	
-	@Autowired
-	@Qualifier("employeeValidator")
-	private Validator validator;
-	
-	@InitBinder
-	private void initBinder(WebDataBinder binder){
-		binder.setValidator(validator);
-	}
-
 	// add common elements to site
 	@ModelAttribute
 	public void addingCommonObjects(Model displayModel) {
@@ -91,7 +82,6 @@ public class DeleteEmployee {
 
 			}
 			System.out.println("");
-			
 
 			res.close();
 			st.close();
@@ -108,17 +98,10 @@ public class DeleteEmployee {
 
 	// Mapping for the deleted Employee
 	@RequestMapping(value = "/deletedEmployee.html", method = RequestMethod.POST)
-	public String delete(@ModelAttribute("getEmployee") @Validated Employee employee, BindingResult result, ModelMap model) {
+	public String delete(@ModelAttribute("getEmployee") @Validated Employee employee, ModelMap model) {
 		
 		model.addAttribute("deleteEmployee", employee);
 		String returnVal = "deletedEmployee";
-
-		// return to the same page if error occurs
-		if(result.hasErrors()){
-			returnVal = "deleteEmployee";
-		}else{
-			model.addAttribute("deleteEmployee", employee);
-		}
 		
 		try {
 
@@ -132,11 +115,6 @@ public class DeleteEmployee {
 			PreparedStatement prep = con.prepareStatement(sql);
 
 			prep.setObject(1, employee.getLastName());
-			
-			// move employee user_name and role from users and user_role
-			st.execute("DELETE FROM users WHERE username = "+employee.getLastName()+"");
-			st.execute("DELETE FROM user_roles WHERE username = "+employee.getLastName()+"");
-					   
 			prep.executeUpdate();
 
 		} catch (Exception e) {
