@@ -19,7 +19,7 @@ import de.emma.model.Employee;
 import de.emma.model.Project;
 
 @Controller
-public class Projects {
+public class NewProject {
 
 	// values to create connection
 	private String url = "jdbc:mysql://localhost:3306";
@@ -37,6 +37,7 @@ public class Projects {
 		displayModel.addAttribute("registeredProject", "Success! the project was registered!");
 	};
 
+// create new project
 	@RequestMapping(value = "/newProject.html", method = RequestMethod.GET)
 	public String initEmployee(ModelMap map) {
 
@@ -86,6 +87,7 @@ public class Projects {
 		return "newProject";
 	}
 
+// success page after registering
 	@RequestMapping(value = "/registeredProject.html", method = RequestMethod.POST)
 	public String submit(Employee emp, Project pro, Model model) {
 

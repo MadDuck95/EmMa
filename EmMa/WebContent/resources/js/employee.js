@@ -71,7 +71,7 @@ function validateEmployee() {
 		return false;
 	} else {
 		return true;
-}
+	}
 }
 
 function startTime() {

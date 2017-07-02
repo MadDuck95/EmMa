@@ -19,7 +19,6 @@
 
 <title>Employee Manager - EmMa</title>
 
-
 <body onload="startTime()">
 	<div id="main">
 		<div id="clock"></div>

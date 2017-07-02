@@ -19,6 +19,7 @@ public class MainProjects {
 		mav.addObject("projectsMainTitle", "Projects");
 		mav.addObject("newProject", "new Project");
 		mav.addObject("viewExisting", "view existing projects");
+		mav.addObject("deleteProject", "delete projects");
 		
 		return mav;
 	}

@@ -5,11 +5,11 @@
 
 <head>
 <!-- javascript -->
-<script src="<c:url value="/resources/js/employee.js" />"></script>
+<script src="<c:url value="/resources/js/project.js" />"></script>
 <script src="<c:url value="/resources/js/sweetalert.min.js" />"></script>
 
 <!-- css -->
-<link href="<c:url value="/resources/css/Employee.css" />"
+<link href="<c:url value="/resources/css/Projects.css" />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/sweetalert.css"/>"
 	rel="stylesheet">
@@ -24,27 +24,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
-<title>EmMa - delete Employee</title>
-
+<title>EmMa - delete Project</title>
 <body onload="startTime()">
 	<div id="main">
 		<div id="clock"></div>
 		<div id="home">
 			<a href="/EmMa/"> <i class="fa fa-home fa-lg"> </i></a>
 		</div>
-		<form:form name="employeeSelect" onsubmit="return validateEmployee()"
-			action="/EmMa/deletedEmployee.html" modelAttribute="getEmployee"
+		<form:form name="projectSelect" onsubmit="return proSelect()"
+			action="/EmMa/deletedProject.html" modelAttribute="initProjects"
 			method="POST">
-			<div id="titleMsg">
-				<a href="/EmMa/deleteEmployee.html"> <i
-					class="fa fa-trash-o fa-lg"></i></a> ${deleteEmployeeTitle}
+			<div id="title">
+				<a href="/EmMa/deleteProject.html"> <i class="fa fa-trash fa-lg"></i></a>${delteProjectTitle}
 			</div>
 			<div id="flexbox">
 				<table>
 					<tr>
-						<td><form:select path="lastName" name="lastName">
-								<form:option value="" label="Select employee ..." />
-								<form:options items="${employeeHashTable}" />
+						<td><form:select path="pDesc" name="pDesc">
+								<form:option value="" label="Select project ..." />
+								<form:options items="${projectsTable}" />
 							</form:select>
 					</tr>
 					<tr>
@@ -54,6 +52,5 @@
 			</div>
 		</form:form>
 	</div>
-
 </body>
 </html>

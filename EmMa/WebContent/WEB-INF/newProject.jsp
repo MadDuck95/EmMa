@@ -6,9 +6,17 @@
 <html lang="de">
 
 <head>
-<script src="<c:url value="/resources/js/main.js" />"></script>
+<!-- javascript -->
+<script src="<c:url value="/resources/js/project.js" />"></script>
+<script src="<c:url value="/resources/js/sweetalert.min.js" />"></script>
+
+<!-- css -->
 <link href="<c:url value="/resources/css/Projects.css" />"
 	rel="stylesheet">
+<link href="<c:url value="/resources/css/sweetalert.css"/>"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -16,10 +24,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>EmMa - new Project</title>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
+<title>EmMa - new Project</title>
+
 
 <body onload="startTime()">
 	<div id="main">
@@ -32,7 +40,9 @@
 			${newProject}
 		</div>
 
-		<form method="POST" action="/EmMa/registeredProject.html">
+		<form method="POST" name="newProject"
+			onsubmit="return validateProject()"
+			action="/EmMa/registeredProject.html">
 			<div id="flexbox">
 				<table>
 					<tr>
@@ -40,7 +50,7 @@
 								<form:label path="pro.pDesc">Name: </form:label>
 							</spring:bind></td>
 						<td><spring:bind path="pro.pDesc">
-								<form:input value="" path="pro.pDesc" />
+								<form:input name="pDesc" value="" path="pro.pDesc" />
 							</spring:bind></td>
 					</tr>
 					<tr>
@@ -48,7 +58,7 @@
 								<form:label path="pro.startDate">Beginn date: </form:label>
 							</spring:bind></td>
 						<td><spring:bind path="pro.startDate">
-								<form:input path="pro.startDate" type="date"></form:input>
+								<form:input name="startDate" path="pro.startDate" type="date"></form:input>
 							</spring:bind></td>
 					</tr>
 					<tr>
@@ -56,65 +66,25 @@
 								<form:label path="pro.endDate">End date: </form:label>
 							</spring:bind></td>
 						<td><spring:bind path="pro.endDate">
-								<form:input path="pro.endDate" type="date"></form:input>
+								<form:input name="endDate" path="pro.endDate" type="date"></form:input>
 							</spring:bind></td>
 					</tr>
 					<tr>
 						<td><spring:bind path="emp.lastName">
-								<form:label path="emp.lastName">Team Member 1:</form:label>
+								<form:label path="emp.lastName">Team Members:</form:label>
 							</spring:bind></td>
 
 						<td><spring:bind path="emp.lastName">
-								<form:select path="emp.lastName">
-									<form:option value="" label="Select employee ..." />
+								<form:select multiple="true" name="emp1" path="emp.lastName">
+									<form:option value="" label="--- Select employees  ---" />
 									<form:options items="${employeeHashTable}" />
-								</form:select>
-								<%-- <td><form:errors path="lastName" --%>
-							</spring:bind></td>
-					</tr>
-					<tr>
-						<td><spring:bind path="emp.lastName">
-								<form:label path="emp.lastName">Team Member 2:</form:label>
-							</spring:bind></td>
-
-
-						<td><spring:bind path="emp.lastName">
-								<form:select path="emp.lastName">
-									<form:option value="" label="Select employee ..." />
-									<form:options items="${employeeHashTable}" />
-								</form:select>
-								<%-- <td><form:errors path="lastName" --%>
-							</spring:bind></td>
-					</tr>
-					<tr>
-						<td><spring:bind path="emp.lastName">
-								<form:label path="emp.lastName">Team Member 3:</form:label>
-							</spring:bind></td>
-
-						<td><spring:bind path="emp.lastName">
-								<form:select path="emp.lastName">
-									<form:option value="" label="Select employee ..." />
-									<form:options items="${employeeHashTable}" />
-									<%-- <td><form:errors path="lastName" --%>
 								</form:select>
 							</spring:bind></td>
 					</tr>
-					<tr>
-						<td><spring:bind path="emp.lastName">
-								<form:label path="emp.lastName">Team Member 4:</form:label>
-							</spring:bind></td>
 
-						<td><spring:bind path="emp.lastName">
-								<form:select path="emp.lastName">
-									<form:option value="" label="Select employee ..." />
-									<form:options items="${employeeHashTable}" />
-									<%--<td><form:errors path="lastName" --%>
-								</form:select>
-							</spring:bind></td>
-					</tr>
 					<tr>
 						<td><spring:bind path="pro.pText">
-								<form:label path="pro.pText">Description (250 Characters):</form:label>
+								<form:label path="pro.pText">Description:</form:label>
 							</spring:bind></td>
 						<td><form:textarea path="pro.pText" rows="5" cols="30" /></td>
 					</tr>

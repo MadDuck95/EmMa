@@ -77,7 +77,7 @@ public class ExistingProjects {
 	}
 
 	@RequestMapping(value = "/existingProjectsSelect.html", method = RequestMethod.POST)
-	public String select(@ModelAttribute("initProjects") Project project, BindingResult result, Model model) {
+	public String select(@ModelAttribute("initProjects") Project project, Model model) {
 
 		model.addAttribute("existingProjects", project);
 

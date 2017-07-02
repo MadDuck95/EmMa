@@ -16,7 +16,6 @@
 <title>EmMa - Projects</title>
 </head>
 
-
 <body onload="startTime()">
 	<div id="main">
 		<div id="clock"></div>
@@ -24,7 +23,7 @@
 			<a href="/EmMa/"> <i class="fa fa-home fa-lg"> </i></a>
 		</div>
 		<div id="title">${projectsMainTitle}</div>
-		
+
 		<div id="flexbox">
 			<a href="/EmMa/newProject.html">
 				<div id="divTile">
@@ -41,6 +40,16 @@
 						<p>
 							<i class="fa fa-book fa-4x"></i>
 						</p>${viewExisting}
+					</div>
+				</div>
+		</div>
+		<div id="flexbox">
+			<a href="/EmMa/deleteProject.html">
+				<div id="divTile">
+					<div id="divTileContent">
+						<p>
+							<i class="fa fa-trash fa-4x"></i>
+						</p>${deleteProject}
 					</div>
 				</div>
 		</div>

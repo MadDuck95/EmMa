@@ -31,6 +31,16 @@ body {
 	margin: 50px 50px 50px 50px;
 }
 
+#titleMsg {
+	background-color: white;
+	max-height: 75px;
+	text-align: center;
+	font-family: Helvetica, sans-serif;
+	font-size: 40px;
+	padding: 60px 0px 60px 0px;
+	position: relative;
+}
+
 #title {
 	background-color: white;
 	max-height: 75px;
@@ -88,6 +98,23 @@ body {
 	font-family: Helvetica, sans-serif;
 	font-size: 20px;
 	margin: 5px;
+}
+
+#del {
+	padding: 10px 15px 11px !important;
+	font-size: 18px !important;
+	background-color: red;
+	font-weight: bold;
+	text-shadow: 1px 1px red;
+	color: #ffffff;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid red;
+	cursor: pointer;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 }
 
 i {

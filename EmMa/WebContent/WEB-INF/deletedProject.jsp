@@ -6,12 +6,9 @@
 <head>
 <!-- javascript -->
 <script src="<c:url value="/resources/js/project.js" />"></script>
-<script src="<c:url value="/resources/js/sweetalert.min.js" />"></script>
 
 <!-- css -->
 <link href="<c:url value="/resources/css/Projects.css" />"
-	rel="stylesheet">
-<link href="<c:url value="/resources/css/sweetalert.css"/>"
 	rel="stylesheet">
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -24,7 +21,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
-<title>EmMa - new Project</title>
+<title>EmMa - delete Project</title>
 
 <body onload="startTime()">
 	<div id="main">
@@ -32,28 +29,10 @@
 		<div id="home">
 			<a href="/EmMa/"> <i class="fa fa-home fa-lg"> </i></a>
 		</div>
-		<form:form name="projectSelect" onsubmit="return checkProject()"
-			action="/EmMa/existingProjectsSelect.html" modelAttribute="initProjects"
-			method="POST">
-			<div id="title">
-				<a href="/EmMa/existingProjects.html"> <i
-					class="fa fa-book fa-lg"></i></a>${existingProjects}
-			</div>
-			<div id="flexbox">
-				<table>
-					<tr>
-						<td><form:select path="pDesc" name="pDesc" >
-								<form:option value="" label="Select project ..." />
-								<form:options items="${projectsTable}" />
-							</form:select>
-
-					</tr>
-					<tr>
-						<td><input type="submit" value="Show details" /></td>
-					</tr>
-				</table>
-			</div>
-		</form:form>
+		<div id="titleMsg">
+			<a href="/EmMa/deleteProject.html"> <i
+				class="fa fa-trash-o fa-lg"></i></a>${deletedProjectTitle}
+		</div>
 	</div>
-</body>
+</body> 
 </html>
