@@ -17,9 +17,9 @@ public class CalJson implements JSONAware {
 	@Override
 	public String toJSONString(){
 	    JSONObject obj = new JSONObject();
-	    obj.put("title", title);
-	    obj.put("start", start);
-	    obj.put("end", end);
+	    obj.put("calTitle", title);
+	    obj.put("startDate", start);
+	    obj.put("endDate", end);
 	    return obj.toString();
 	  }
 }

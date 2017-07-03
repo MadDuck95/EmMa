@@ -37,15 +37,15 @@
 			height: 650,
 			editable: true,
 			selectable: true,
-			//events: "json-events.jsp",
-			eventSources: [
+			events: "json-events.jsp",
+			/*eventSources: [
 		    {events: [
 		        	{title  : "Es funktioniert!",
-		            start  : '2017-06-01',
-		            end    : '2017-06-07'},
+		            start  : '2017-07-01',
+		            end    : '2017-07-07'},
 			],
 			color: 'orangered',}
-			]
+			]*/
 		});
 	});
 </script>
