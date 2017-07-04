@@ -24,7 +24,7 @@
 			<a href="/EmMa/"> <i class="fa fa-home fa-lg"> </i></a>
 		</div>
 		<div id="title">${calendarMainTitle}</div>
-		
+
 		<div id="flexbox">
 			<a href="/EmMa/newCalendar.html">
 				<div id="divTile">
@@ -41,6 +41,16 @@
 						<p>
 							<i class="fa fa-calendar fa-4x"></i>
 						</p>${viewExisting}
+					</div>
+				</div>
+		</div>
+		<div id="flexbox">
+			<a href="/EmMa/deleteEvent.html">
+				<div id="divTile">
+					<div id="divTileContent">
+						<p>
+							<i class="fa fa-trash fa-4x"></i>
+						</p>${deleteEvent}
 					</div>
 				</div>
 		</div>

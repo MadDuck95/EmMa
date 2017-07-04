@@ -5,7 +5,7 @@
 
 <head>
 <!-- javascript -->
-<script src="<c:url value="/resources/js/event.js" />"></script>
+<script src="<c:url value="/resources/js/project.js" />"></script>
 
 <!-- css -->
 <link href="<c:url value="/resources/css/Projects.css" />"
@@ -21,7 +21,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
-<title>EmMa - delete Project</title>
+<title>EmMa - delete calendar event</title>
 
 <body onload="startTime()">
 	<div id="main">
@@ -30,8 +30,8 @@
 			<a href="/EmMa/"> <i class="fa fa-home fa-lg"> </i></a>
 		</div>
 		<div id="titleMsg">
-			<a href="/EmMa/deleteEvent.html"> <i
-				class="fa fa-trash-o fa-lg"></i></a>${deletedProjectTitle}
+			<a href="/EmMa/deleteProject.html"> <i
+				class="fa fa-trash-o fa-lg"></i></a>${deletedEventTitle}
 		</div>
 	</div>
 </body> 

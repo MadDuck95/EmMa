@@ -19,6 +19,7 @@ public class MainCalendar {
 		mav.addObject("calendarMainTitle", "Calendar");
 		mav.addObject("newCalendar", "new Calendar Event");
 		mav.addObject("viewExisting", "view existing Events");
+		mav.addObject("deleteEvent", "delete Event");
 		
 		return mav;
 	}
