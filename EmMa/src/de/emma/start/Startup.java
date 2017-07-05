@@ -65,8 +65,9 @@ public class Startup {
 					  "KEY fk_username_idx (username)," +
 					  "CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username)"+")");
 			
-			st.execute("INSERT INTO user_roles (username, role)" +
-					   "VALUES ('admin','ROLE_USER')");
+			st.execute("INSERT INTO user_roles (username, role) VALUES" +
+					   "('admin','ROLE_USER')," +
+					   "('admin','ROLE_ADMIN')");
 			
 			st.close();
 			con.close();

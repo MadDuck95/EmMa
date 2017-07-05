@@ -15,7 +15,7 @@
 <body onload='document.loginForm.username.focus();' onload="startTime()">
 
 	<div id="main">
-		<div id="clock"></div>
+		
 		<h1 id="title">Welcome to Employee Management (EmMa)</h1>	
 		<div id="login-box">
 

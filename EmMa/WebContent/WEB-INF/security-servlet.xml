@@ -11,9 +11,8 @@
  	
  	<http auto-config="true" use-expressions="true">		
 	    
-		<intercept-url pattern="/EmMa**" access="ROLE_USER" />
-		
- 	
+		<intercept-url pattern="/" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/" access="hasRole('ROLE_USER')" /> 	
 
 		<form-login
 		    login-page="/login"
@@ -29,11 +28,7 @@
  	<authentication-manager>
  		<authentication-provider>
  		
- 		<!-- <user-service>
- 			<user name="admin" password="admin"	authorities="ROLE_USER"/>
- 		</user-service>-->
- 			
- 				<jdbc-user-service data-source-ref= "dataSource"
+ 		<jdbc-user-service data-source-ref= "dataSource"
 		  users-by-username-query= "select username,password, enabled from users where username=?"
 		  authorities-by-username-query= "select username, role from user_roles where username =?" /> 
  		
