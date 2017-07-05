@@ -21,25 +21,20 @@ import de.emma.model.Employee;
 
 @Controller
 public class NewEmployee {
-	
+
 	// values to create connection
 	private String url = "jdbc:mysql://localhost:3306";
 	private String password = "";
 	private String user = "root";
 	private String database = "employeemanager";
 
-	// implement validator
-	@Autowired
-	@Qualifier("employeeValidator")
-	private Validator validator;
-
-	// set validator
-	@InitBinder
-	private void initBinder(WebDataBinder binder) {
-		binder.setValidator(validator);
-	}
-
 	// add common elements to site
+
+	/**
+	 * define title elements with specific values for registering an employee
+	 * and the successpage after registering.
+	 * 
+	 */
 	@ModelAttribute
 	public void addingCommonObjects(Model displayModel) {
 		// newEmployee.html
@@ -48,16 +43,20 @@ public class NewEmployee {
 		// registeredEmployee.html
 		displayModel.addAttribute("registeredEmployeeTitle", "Success! the employee is saved!");
 	};
-	
-	public ModelAndView getDeparmtmentList(){
-		ModelAndView mav = new ModelAndView();
-		
-		return mav;
-	}
 
 	// add the employee bean to enable data binding
+
+	/**
+	 * Get all departments from the database and set all in a table to select a
+	 * department for the new employee.
+	 * 
+	 * @return the department table and the employee object to register a new
+	 *         employee.
+	 * 
+	 */
+	
 	@RequestMapping(value = "/newEmployee.html", method = RequestMethod.GET)
-	public ModelAndView initEmployee(Model model) {
+	public ModelAndView initEmployee() {
 
 		ModelAndView mav = new ModelAndView("newEmployee");
 
@@ -101,11 +100,23 @@ public class NewEmployee {
 	}
 
 	// binding submitted values
-	@RequestMapping(value = "/registeredEmployee.html", method = RequestMethod.POST)
-	public String submit(@ModelAttribute("initEmployee") @Validated Employee employee, Model model) {
 
-		model.addAttribute("newEmployee", employee);
-		
+	/**
+	 * method to display all the submitted data on the employee success page.
+	 * 
+	 * @param employee
+	 *            employee values from the registerpage to create a new employee
+	 *            in the database.
+	 * @param model
+	 *            set the submitted attributes to display them on the success
+	 *            page after registration.
+	 * 
+	 * @return to load the successpage with all submitted values.
+	 * 
+	 */
+	@RequestMapping(value = "/registeredEmployee.html", method = RequestMethod.POST)
+	public String submit(@ModelAttribute("initEmployee") Employee employee, Model model) {
+
 		String returnVal = "registeredEmployee";
 
 		try {
@@ -134,12 +145,12 @@ public class NewEmployee {
 
 			prepst.executeUpdate();
 			prepst.close();
-			
-			
-			st.execute("INSERT INTO users (username,password,enabled) " + 
-					   "VALUES ('"+employee.getLastName().toLowerCase()+"','"+employee.getFirstName().toLowerCase()+"', true)");
-			st.execute("INSERT INTO user_roles (username, role)" +
-					   "VALUES ('"+employee.getLastName().toLowerCase()+"','ROLE_USER')");
+
+			st.execute("INSERT INTO users (username,password,enabled) " + "VALUES ('"
+					+ employee.getLastName().toLowerCase() + "','" + employee.getFirstName().toLowerCase()
+					+ "', true)");
+			st.execute("INSERT INTO user_roles (username, role)" + "VALUES ('" + employee.getLastName().toLowerCase()
+					+ "','ROLE_USER')");
 			st.close();
 
 		} catch (Exception e) {

@@ -22,7 +22,9 @@
 		<div id="home">
 			<a href="/EmMa/"> <i class="fa fa-home fa-lg"> </i></a>
 		</div>
-		<div id="title">${projectsMainTitle}</div>
+		<div id="title">
+			<a href="/EmMa/newEmployee.html"> <i
+				class="fa fa-users fa-lg"></i></a>${projectsMainTitle}</div>
 
 		<div id="flexbox">
 			<a href="/EmMa/newProject.html">

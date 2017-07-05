@@ -34,24 +34,37 @@ public class DeleteEmployee {
 	private String password = "";
 	private String user = "root";
 	private String database = "employeemanager";
-	
+
 	// add common elements to site
+
+	/**
+	 * define title elements with there specific values for deleting an employee
+	 * and the successpage after deletion.
+	 * 
+	 */
 	@ModelAttribute
 	public void addingCommonObjects(Model displayModel) {
 		// deleteEmployee.html
 		displayModel.addAttribute("deleteEmployeeTitle", "delete an existing employee");
 
 		// deletedEmployee.html
-		displayModel.addAttribute("deletedEmployeeTitle", "Success! the employee is now deleted!");
 		displayModel.addAttribute("deletedText", "Success! The employee was sumbited and deleted!");
 	}
 
 	// Mapping for deleting an Employee
+
+	/**
+	 * Get all employees from the database and set all in a table to select a
+	 * employee for deletion.
+	 * 
+	 * @return the employee object and the table to the delete employee page.
+	 * 
+	 */
 	@RequestMapping(value = "/deleteEmployee.html", method = RequestMethod.GET)
 	private ModelAndView initEmployees() {
 
 		ModelAndView mav = new ModelAndView("deleteEmployee");
-		
+
 		Hashtable<String, String> hashtable = new Hashtable<String, String>();
 
 		try {
@@ -73,12 +86,9 @@ public class DeleteEmployee {
 
 				// set result in the HashTable
 				hashtable.put(res.getString("employeeId"),
-						"|| "+ res.getString("title")+" || "
-						+ res.getString("lastName")+ " " 
-						+ res.getString("firstName") + " - " 
-						+ res.getString("adress") + " - "
-						+ res.getString("zip")+ " "
-						+ res.getString("city"));
+						"|| " + res.getString("title") + " || " + res.getString("lastName") + " "
+								+ res.getString("firstName") + " - " + res.getString("adress") + " - "
+								+ res.getString("zip") + " " + res.getString("city"));
 
 			}
 			System.out.println("");
@@ -97,12 +107,21 @@ public class DeleteEmployee {
 	}
 
 	// Mapping for the deleted Employee
+
+	/**
+	 * Delete the selected employee and show the success page after deletion.
+	 * 
+	 * @param employee
+	 *            get all employee related values from the database.
+	 * 
+	 * @return the success page after deletion of an employee.
+	 * 
+	 */
 	@RequestMapping(value = "/deletedEmployee.html", method = RequestMethod.POST)
-	public String delete(@ModelAttribute("getEmployee") @Validated Employee employee, ModelMap model) {
-		
-		model.addAttribute("deleteEmployee", employee);
+	public String delete(@ModelAttribute("getEmployee") Employee employee) {
+
 		String returnVal = "deletedEmployee";
-		
+
 		try {
 
 			// build connection to the SQL Server

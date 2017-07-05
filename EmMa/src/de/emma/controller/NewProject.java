@@ -28,6 +28,12 @@ public class NewProject {
 	private String database = "employeemanager";
 
 	// add common elements to site
+
+	/**
+	 * define title elements with specific values for registering a project and
+	 * the successpage after registering.
+	 * 
+	 */
 	@ModelAttribute
 	public void addingCommonObjects(Model displayModel) {
 		// newEmployee.html
@@ -37,7 +43,17 @@ public class NewProject {
 		displayModel.addAttribute("registeredProject", "Success! the project was registered!");
 	};
 
-// create new project
+	// create new project
+	/**
+	 * get all employees from the database and set them to a hashtable for
+	 * selection on the project register page.
+	 * 
+	 * @param map
+	 *            set project and employee object and set all employees from the
+	 *            database to a hashtable.
+	 * @return the new project page.
+	 * 
+	 */
 	@RequestMapping(value = "/newProject.html", method = RequestMethod.GET)
 	public String initEmployee(ModelMap map) {
 
@@ -87,7 +103,24 @@ public class NewProject {
 		return "newProject";
 	}
 
-// success page after registering
+	// success page after registering
+
+	/**
+	 * retrieve the submitted data from the register project page to set the
+	 * values to the project table and the relation table between employees and
+	 * project.
+	 * 
+	 * @param emp
+	 *            get all employee related values from the register project
+	 *            page.
+	 * @param pro
+	 *            get all project related values from the register project page.
+	 * @param model
+	 *            transfer the data via the model to the success project page.
+	 * 
+	 * @return the success page after successfully registration.
+	 */
+
 	@RequestMapping(value = "/registeredProject.html", method = RequestMethod.POST)
 	public String submit(Employee emp, Project pro, Model model) {
 

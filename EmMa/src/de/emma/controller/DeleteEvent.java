@@ -26,6 +26,11 @@ public class DeleteEvent {
 	private String database = "employeemanager";
 
 	// add common elements to site
+	/**
+	 * define title elements with specific values for the delete calender and
+	 * the deleted event page.
+	 * 
+	 */
 	@ModelAttribute
 	public void addingCommonObjects(Model displayModel) {
 		// deletProject.html
@@ -35,8 +40,16 @@ public class DeleteEvent {
 		displayModel.addAttribute("deletedEventTitle", "Success! the event is deleted!");
 	}
 
+	/**
+	 * Get all calendar events from the database and set all in a table to
+	 * select a event for deletion and hand over the project object.
+	 * 
+	 * @return the calendar object and the table to the delete project page.
+	 * 
+	 */
+
 	@RequestMapping(value = "/deleteEvent.html", method = RequestMethod.GET)
-	public ModelAndView initEvents(Model model) {
+	public ModelAndView initEvents() {
 
 		ModelAndView mav = new ModelAndView("deleteEvent");
 
@@ -79,6 +92,18 @@ public class DeleteEvent {
 	}
 
 	// Mapping for the deleted project
+
+	/**
+	 * delete the submitted calendar event from the database.
+	 * 
+	 * @param calendar
+	 *            get the submitted calendar values.
+	 * @param model
+	 *            cast the calendar event to the model.
+	 * 
+	 * @return the success page for deletion of an calendar event.
+	 * 
+	 */
 	@RequestMapping(value = "/deletedEvent.html", method = RequestMethod.POST)
 	public String delete(@ModelAttribute("initProjects") Calendar calendar, Model model) {
 

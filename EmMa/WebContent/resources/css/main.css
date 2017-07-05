@@ -13,6 +13,12 @@ body {
 	border-right: 5px solid orange;
 	width: 100px;
 	background-color: #FFB939;
+	padding: 0px 0px 5px 0px;
+}
+
+img {
+	height: 150px;
+	width: 140px;
 }
 
 #home {
@@ -38,7 +44,7 @@ body {
 	text-align: center;
 	font-family: Helvetica, sans-serif;
 	font-size: 40px;
-	padding: 60px 0px 60px 0px;
+	padding: 60px 0px 100px 0px;
 	position: relative;
 }
 
@@ -80,10 +86,10 @@ body {
 	width: 300px;
 	padding: 20px;
 	margin: 100px auto;
-	background: orange ;
+	background: #FFB939 ;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
-	border: 1px solid #000;
+	border: 3px solid orange;
 }
 
 i {

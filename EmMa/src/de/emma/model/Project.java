@@ -2,6 +2,10 @@ package de.emma.model;
 
 import java.sql.Date;
 
+/**
+ * define the model project with all necesarry attributes + setter and getter.
+*/
+
 public class Project {
 
 	// attributes

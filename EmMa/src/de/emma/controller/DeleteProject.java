@@ -21,14 +21,19 @@ import de.emma.model.Project;
 
 @Controller
 public class DeleteProject {
-	
+
 	// values to create connection
 	private String url = "jdbc:mysql://localhost:3306";
 	private String password = "";
 	private String user = "root";
 	private String database = "employeemanager";
-	
+
 	// add common elements to site
+	/**
+	 * define title elements with specific values for registering a project and
+	 * the successpage after registering.
+	 * 
+	 */
 	@ModelAttribute
 	public void addingCommonObjects(Model displayModel) {
 		// deletProject.html
@@ -37,7 +42,14 @@ public class DeleteProject {
 		// registeredEmployee.html
 		displayModel.addAttribute("deletedProjectTitle", "Success! the project is deleted!");
 	}
-	
+
+	/**
+	 * Get all projects from the database and set all in a table to select a
+	 * project for deletion and hand over the project object.
+	 * 
+	 * @return the project object and the table to the delete project page.
+	 * 
+	 */
 	@RequestMapping(value = "/deleteProject.html", method = RequestMethod.GET)
 	public ModelAndView initProjects(Model model) {
 
@@ -81,11 +93,19 @@ public class DeleteProject {
 	}
 
 	// Mapping for the deleted project
+
+	/**
+	 * Delete the selected project and show the success page after deletion.
+	 * 
+	 * @param project
+	 *            get the submitted project values from the delete project page.
+	 * 
+	 * @return the success page after deletion of an project.
+	 * 
+	 */
 	@RequestMapping(value = "/deletedProject.html", method = RequestMethod.POST)
-	public String delete(@ModelAttribute("initProjects") Project project, Model model) {
-		
-		model.addAttribute("deletedProject", project);
-		
+	public String delete(@ModelAttribute("initProjects") Project project) {
+
 		try {
 
 			// build connection to the SQL Server
@@ -101,10 +121,9 @@ public class DeleteProject {
 
 			prep1.setObject(1, project.getpDesc());
 			prep1.executeUpdate();
-			
+
 			prep2.setObject(1, project.getpDesc());
 			prep2.executeUpdate();
-
 
 		} catch (Exception e) {
 			System.out.println("couldnt delete the project due following error: " + e);

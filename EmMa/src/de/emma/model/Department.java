@@ -1,3 +1,7 @@
+/**
+ * define the model department with all necesarry attributes + setter and getter.
+*/
+
 package de.emma.model;
 
 public class Department {

@@ -26,7 +26,9 @@
 			<a href="/EmMa/login"> <i class="fa fa-sign-out fa-lg"> </i></a>
 		</div>
 
-		<h1 id="title">${title}</h1>
+	<div id="title">
+			<img src="<c:url value="/resources/pictures/EmMaLogo.PNG"/>"></img>
+		</div>
 
 		<div id="flexbox">
 			<a href="/EmMa/newEmployee.html">

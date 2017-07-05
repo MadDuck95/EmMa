@@ -21,15 +21,21 @@ import de.emma.model.Calendar;
 
 @Controller
 public class NewCalendarEvent {
-	
+
 	// values to create connection
 	private String url = "jdbc:mysql://localhost:3306";
 	private String password = "";
 	private String user = "root";
 	private String database = "employeemanager";
 
-
 	// add common elements to site
+
+	/**
+	 * define title elements with specific values for registering an calendar
+	 * event and the successpage after registering an event.
+	 * 
+	 */
+
 	@ModelAttribute
 	public void addingCommonObjects(Model displayModel) {
 		// newCalendar.html
@@ -38,14 +44,24 @@ public class NewCalendarEvent {
 		// registeredCalendar.html
 		displayModel.addAttribute("registeredCalendarTitle", "Success! the calendar event is saved!");
 	};
-	
-	public ModelAndView getCalendarList(){
+
+	public ModelAndView getCalendarList() {
 		ModelAndView mav = new ModelAndView();
-		
+
 		return mav;
 	}
 
 	// add the calendar bean to enable data binding
+
+	/**
+	 * registration of a new calendarevent.
+	 * 
+	 * @param model
+	 *            a handover pararmeter for submittion of the calendar event.
+	 * 
+	 * @return the page for a calendar event registration and hand over the
+	 *         entered values.
+	 */
 	@RequestMapping(value = "/newCalendar.html", method = RequestMethod.GET)
 	public ModelAndView initCalendar(Model model) {
 
@@ -87,26 +103,30 @@ public class NewCalendarEvent {
 		mav.addObject("initCalendar", new Calendar());
 
 		return mav;
-
 	}
 
 	// binding submitted values
+
+	/**
+	 * registration of a new calendarevent.
+	 * 
+	 * @param calendar
+	 *            get the submitted calendar data from the calendar event page.
+	 * @param model
+	 *            cast the entries of the registration page to the model
+	 *            attribut to show the values in the success page for the
+	 *            calender event registration.
+	 * 
+	 * @return the registered calendar event page with submitted values.
+	 */
+
 	@RequestMapping(value = "/registeredCalendar.html", method = RequestMethod.POST)
-	public String submit(@ModelAttribute("initCalendar") Calendar calendar  , BindingResult result,
-			Model model) {
+	public String submit(@ModelAttribute("initCalendar") Calendar calendar, Model model) {
 
 		model.addAttribute("newCalendar", calendar);
-		
-		String returnVal = "registeredCalendar";
 
-		// return error on the same page
-		if (result.hasErrors()) {
-			
-			initCalendar(model);
-			returnVal = "newCalendar";
-		} else {
-			model.addAttribute("newCalendar", calendar);
-		}
+		String returnVal = "registeredCalendar";
+		model.addAttribute("newCalendar", calendar);
 
 		try {
 
@@ -115,9 +135,7 @@ public class NewCalendarEvent {
 			Statement st = con.createStatement();
 
 			// prepared statement for query
-			String sql = "INSERT INTO"
-					+ " calendar (calTitle,startDate,endDate) "
-					+ "VALUES (?,?,?)";
+			String sql = "INSERT INTO" + " calendar (calTitle,startDate,endDate) " + "VALUES (?,?,?)";
 			PreparedStatement prepst = con.prepareStatement(sql);
 			st.execute("USE " + database);
 

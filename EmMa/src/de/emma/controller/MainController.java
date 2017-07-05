@@ -8,18 +8,25 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
-	
+
+	/**
+	 * returns the ModelAndView attributes to the mainpage, for displaying the
+	 * tile names.
+	 * 
+	 * @return returns the ModelAndView attributes to the mainpage.
+	 */
+
 	@RequestMapping("/")
 	public ModelAndView home() {
-		
+
 		ModelAndView model = new ModelAndView("main");
-		
+
 		model.addObject("title", "EmMa - EmployeeManager ");
 		model.addObject("newEmployee", "new Employee ");
 		model.addObject("calendar", "Calendar ");
 		model.addObject("deleteEmployee", "delete Employee");
 		model.addObject("projects", "Projects ");
-		
+
 		return model;
 	}
 }

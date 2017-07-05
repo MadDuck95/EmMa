@@ -28,14 +28,25 @@ public class ExistingProjects {
 	private String database = "employeemanager";
 
 	// add common elements to site
+
+	/**
+	 * define title elements with specific values for the existing project page.
+	 * 
+	 */
 	@ModelAttribute
 	public void addingCommonObjects(Model displayModel) {
 		// existingProjects.html
 		displayModel.addAttribute("existingProjects", "View existing projects");
 	};
 
+	/**
+	 * return all projects via select to the existing project page.
+	 * 
+	 * @return the new project page.
+	 * 
+	 */
 	@RequestMapping(value = "/existingProjects.html", method = RequestMethod.GET)
-	public ModelAndView initProjects(Model model) {
+	public ModelAndView initProjects() {
 
 		ModelAndView mav = new ModelAndView("existingProjects");
 
@@ -75,6 +86,21 @@ public class ExistingProjects {
 
 		return mav;
 	}
+
+	/**
+	 * return the selected project to a specific page which contains the
+	 * selected attributes.
+	 * 
+	 * @param project
+	 *            get the selected project from the selection page of the
+	 *            projects.
+	 * @param model
+	 *            cast the retrieved data from the database to the model to show
+	 *            the values in the specific page which contains the selected
+	 *            attributes.
+	 * @return the page with the selected project values.
+	 * 
+	 */
 
 	@RequestMapping(value = "/existingProjectsSelect.html", method = RequestMethod.POST)
 	public String select(@ModelAttribute("initProjects") Project project, Model model) {

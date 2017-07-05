@@ -16,7 +16,7 @@
 
 	<div id="main">
 		
-		<h1 id="title">Welcome to Employee Management (EmMa)</h1>	
+		<h1 id="title">Welcome to the Employee Manager (EmMa)</h1>	
 		<div id="login-box">
 
 			<h2>Login with Username and Password</h2>

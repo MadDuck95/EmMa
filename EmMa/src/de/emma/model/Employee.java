@@ -1,6 +1,8 @@
 package de.emma.model;
 
-// attributes
+/**
+ * define the model employee with all necesarry attributes + setter and getter.
+*/
 public class Employee {
 
 	private String firstName;

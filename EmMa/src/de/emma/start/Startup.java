@@ -9,6 +9,12 @@ public class Startup {
 	private String url;
 	private String database;
 
+	/**
+	 * checks if requiered database and tables are available on the server.
+	 * if not, create tables with necessary values and the database
+	 * return message if a error occured.
+	*/
+	
 	public void connectDB() {
 		try {
 			Class.forName(driverClass);

@@ -26,6 +26,15 @@ public class CalendarController {
 	private String user = "root";
 	private String database = "employeemanager";
 
+	/**
+	 * get all calender and project events from the database and transform the
+	 * data in to a json file.
+	 * 
+	 * @return return the modelandview object which contains the calendar object
+	 *         and the jsonfile with all events. Show of the calendar.
+	 * 
+	 */
+
 	@RequestMapping(value = "/calendar.html")
 	public ModelAndView initCalendar() {
 
@@ -65,7 +74,6 @@ public class CalendarController {
 				calEvents.add(calJson);
 			}
 
-			// System.out.print(calEvents);
 			res.close();
 
 			// JSON for projects

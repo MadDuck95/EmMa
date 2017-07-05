@@ -30,7 +30,7 @@
 			<a href="/EmMa/"> <i class="fa fa-home fa-lg"> </i></a>
 		</div>
 		<div id="titleMsg">
-			<a href="/EmMa/deleteEvent.html"> <i
+			<a href="/EmMa/deleteProject.html"> <i
 				class="fa fa-trash-o fa-lg"></i></a>${deletedProjectTitle}
 		</div>
 	</div>

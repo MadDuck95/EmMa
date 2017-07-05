@@ -1,5 +1,9 @@
 package de.emma.model;
 
+/**
+ * define the model calendar with all necesarry attributes + setter and getter.
+*/
+
 public class Calendar {
 	public String calId;
     public String calTitle;
